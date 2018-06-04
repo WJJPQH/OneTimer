@@ -1,6 +1,7 @@
 package com.example.com.onetimer;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -9,6 +10,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.example.com.onetimer.duanzi.CrossFragment;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -24,12 +26,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RadioButton mDuanzi;
     private RadioButton mShipin;
     private RadioGroup mGroup;
-
+    private FragmentManager fragmentManager;
+    private CrossFragment crossFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
+        fragmentManager = getSupportFragmentManager();
+        crossFragment = new CrossFragment();
+
     }
 
     private void initView() {
@@ -60,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tuijian:
                 break;
             case R.id.duanzi:
+                fragmentManager.beginTransaction().replace(R.id.framlayout,crossFragment).commit();
                 break;
             case R.id.shipin:
                 break;

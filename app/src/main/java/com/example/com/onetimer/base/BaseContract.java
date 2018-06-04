@@ -1,11 +1,11 @@
 package com.example.com.onetimer.base;
 
-public class BaseContract {
+public interface BaseContract {
     interface BasePresenter<T extends BaseView>{
         void attchView(T view);
         void detachView();
     }
-    interface BaseView{
+    public interface BaseView{
         void showLoading();
         void dissmissLoading();
     }
