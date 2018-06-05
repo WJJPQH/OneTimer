@@ -3,6 +3,7 @@ package com.example.com.onetimer.module;
 import com.example.com.onetimer.net.Api;
 import com.example.com.onetimer.net.JokeApi;
 import com.example.com.onetimer.net.JokeApiService;
+import com.example.com.onetimer.net.MyInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
@@ -26,6 +27,7 @@ public class HttpModule {
 
     @Provides
     JokeApi provideJoke(OkHttpClient.Builder builder){
+        builder.addInterceptor(new MyInterceptor());
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.Base_URL)
                 .addConverterFactory(GsonConverterFactory.create())
