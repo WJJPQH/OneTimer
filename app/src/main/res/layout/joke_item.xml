@@ -5,26 +5,39 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/imgtou1"
-            android:layout_marginTop="5dp"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            face:roundAsCircle="true"
-            />
+            android:layout_marginTop="5dp"
+            face:roundAsCircle="true" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
         <TextView
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/username"
             android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
             />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/creattime"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="15dp"
+                />
+        </LinearLayout>
 
     </LinearLayout>
 

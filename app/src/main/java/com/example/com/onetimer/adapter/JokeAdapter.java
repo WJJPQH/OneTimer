@@ -44,6 +44,7 @@ public class JokeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         Glide.with(context).load(list.get(position).getImgUrls()).into(jokeViewHolder.img);
         String imgto = list.get(position).getUser().getIcon();
         jokeViewHolder.imgtou.setImageURI(imgto);
+        jokeViewHolder.creatTime.setText(list.get(position).getCreateTime());
     }
 
     @Override
@@ -55,12 +56,14 @@ public class JokeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private SimpleDraweeView imgtou;
         private TextView content;
         private SimpleDraweeView img;
+        private TextView creatTime;
         public JokeViewHolder(View itemView) {
             super(itemView);
             content = itemView.findViewById(R.id.content);
             imgtou = itemView.findViewById(R.id.imgtou1);
             username = itemView.findViewById(R.id.username);
             img = itemView.findViewById(R.id.img);
+            creatTime = itemView.findViewById(R.id.creattime);
         }
     }
 }
