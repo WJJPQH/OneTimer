@@ -1,5 +1,4 @@
 package com.example.com.onetimer;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -21,10 +20,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.com.onetimer.cehua.AttentionActivity;
 import com.example.com.onetimer.duanzi.CrossFragment;
 import com.example.com.onetimer.login.LoginActivity;
+import com.example.com.onetimer.recommend.fragment.Fragment_recommend;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -48,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CrossFragment crossFragment;
     private List<String> list;
     private SimpleDraweeView person;
+    private Fragment_recommend remmendFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         initView();
         crossFragment = new CrossFragment();
+        remmendFragment=new Fragment_recommend();
         fragmentManager = getSupportFragmentManager();
         setListener();
         initWindow();
@@ -109,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.tuijian:
+                        fragmentManager.beginTransaction().replace(R.id.framlayout,remmendFragment).commit();
                         break;
                     case R.id.duanzi:
                         mTitleName.setText("段子");

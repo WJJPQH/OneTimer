@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/group"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:orientation="horizontal"
+                    android:layout_alignParentLeft="true">
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.25"></View>
+                    <RadioButton
+                        android:id="@+id/rm"
+                        android:layout_width="0dp"
+                        android:layout_weight="2.5"
+                        android:checked="true"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="热门"
+                        android:layout_marginLeft="20dp"
+                        android:textColor="@drawable/rm_textcolor" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"></View>
+                    <RadioButton
+                        android:id="@+id/gz"
+                        android:layout_width="0dp"
+                        android:layout_weight="2.5"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:text="关注"
+                        android:textColor="@drawable/rm_textcolor" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.25"></View>
+                </RadioGroup>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:id="@+id/remmend_framelayout"></FrameLayout>
+</LinearLayout>

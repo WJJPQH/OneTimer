@@ -6,6 +6,8 @@ import com.example.com.onetimer.net.JokeApiService;
 import com.example.com.onetimer.net.MyInterceptor;
 import com.example.com.onetimer.net.RegisterApi;
 import com.example.com.onetimer.net.RegisterApiService;
+import com.example.com.onetimer.recommend.net.RecommendApi;
+import com.example.com.onetimer.recommend.net.RecommendApiServiece;
 
 import java.util.concurrent.TimeUnit;
 
@@ -38,6 +40,19 @@ public class HttpModule {
                 .build();
         JokeApiService jokeApiService = retrofit.create(JokeApiService.class);
         return JokeApi.getJokeApi(jokeApiService);
+    }
+    //获取热门视频
+    @Provides
+    RecommendApi myrecommendapi(OkHttpClient.Builder builder){
+        builder.addInterceptor(new MyInterceptor());
+        Retrofit retrofit=new Retrofit.Builder()
+                .baseUrl(Api.Base_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(builder.build())
+                .build();
+        RecommendApiServiece recommendApiServiece=retrofit.create(RecommendApiServiece.class);
+        return RecommendApi.getRecommendApi(recommendApiServiece);
     }
     @Provides
     RegisterApi provideRegister(OkHttpClient.Builder builder){

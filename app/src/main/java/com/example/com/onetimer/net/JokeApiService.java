@@ -9,6 +9,6 @@ import retrofit2.http.POST;
 
 public interface JokeApiService {
     @FormUrlEncoded
-    @POST("quarter/getJokes ")
+    @POST("quarter/getJokes")
     Observable<JokeBean> getJokes(@Field("page") String page);
 }
