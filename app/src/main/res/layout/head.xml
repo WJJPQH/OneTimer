@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    xmlns:face="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/drawerlayout_background"
+    android:gravity="center"
+    >
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/person"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="42dp"
+        face:roundAsCircle="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="沐风"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="92dp"
+            android:src="@drawable/sex"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="92dp" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="18dp"
+        android:text="人生像一场没有尽头的旅行."/>
+
+</LinearLayout>

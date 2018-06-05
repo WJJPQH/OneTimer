@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -41,7 +42,11 @@ public class JokeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         JokeBean.DataBean dataBean = list.get(position);
         jokeViewHolder.content.setText(list.get(position).getContent());
         jokeViewHolder.username.setText(list.get(position).getUser().getNickname()+"");
-        Glide.with(context).load(list.get(position).getImgUrls()).into(jokeViewHolder.img);
+        if (list.get(position).getImgUrls()==null) {
+            Glide.with(context).load(R.drawable.raw_1500033586).into(jokeViewHolder.img);
+        }else {
+            Glide.with(context).load(list.get(position).getImgUrls()).into(jokeViewHolder.img);
+        }
         String imgto = list.get(position).getUser().getIcon();
         jokeViewHolder.imgtou.setImageURI(imgto);
         jokeViewHolder.creatTime.setText(list.get(position).getCreateTime());
@@ -55,7 +60,7 @@ public class JokeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         private TextView username;
         private SimpleDraweeView imgtou;
         private TextView content;
-        private SimpleDraweeView img;
+        private ImageView img;
         private TextView creatTime;
         public JokeViewHolder(View itemView) {
             super(itemView);

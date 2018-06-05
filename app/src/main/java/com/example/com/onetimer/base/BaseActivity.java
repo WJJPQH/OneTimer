@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 
 import com.example.com.onetimer.inter.IBase;
 
@@ -16,7 +17,11 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter> extends
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(getContentLayout());
+        if (getSupportActionBar() != null){
+            getSupportActionBar().hide();
+        }
         inject();
         mPresenter.attchView(this);
     }

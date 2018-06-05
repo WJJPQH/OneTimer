@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:id="@+id/draw"
     tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -15,6 +20,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             fresco:roundAsCircle="true"
+            android:layout_marginTop="40dp"
             android:id="@+id/touxiang"/>
 
         <TextView
@@ -35,6 +41,7 @@
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:layout_marginTop="25dp"
             android:src="@drawable/raw_1500034665"
             android:layout_alignParentRight="true" />
     </RelativeLayout>
@@ -48,30 +55,55 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
+        android:background="#FFFFFF"
         android:id="@+id/group">
         <RadioButton
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/tuijian"
-            android:button="@null"
             android:layout_weight="1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:button="@null"
             android:layout_gravity="center"
+
             android:background="@drawable/tuij_style"/>
         <RadioButton
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:id="@+id/duanzi"
             android:button="@null"
-            android:layout_weight="1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:layout_gravity="center"
             android:background="@drawable/duanzi_style"/>
         <RadioButton
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/shipin"
-            android:button="@null"
             android:layout_weight="1"
+            android:button="@null"
             android:layout_gravity="center"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
             android:background="@drawable/shipin_style"/>
     </RadioGroup>
-</LinearLayout>
+    </LinearLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav"
+        android:layout_gravity="left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:headerLayout="@layout/head"
+        app:menu="@menu/new_menu"
+        >
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/list_item"
+            ></ListView>
+    </android.support.design.widget.NavigationView>
+</android.support.v4.widget.DrawerLayout>

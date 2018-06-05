@@ -4,6 +4,8 @@ import com.example.com.onetimer.net.Api;
 import com.example.com.onetimer.net.JokeApi;
 import com.example.com.onetimer.net.JokeApiService;
 import com.example.com.onetimer.net.MyInterceptor;
+import com.example.com.onetimer.net.RegisterApi;
+import com.example.com.onetimer.net.RegisterApiService;
 
 import java.util.concurrent.TimeUnit;
 
@@ -36,6 +38,18 @@ public class HttpModule {
                 .build();
         JokeApiService jokeApiService = retrofit.create(JokeApiService.class);
         return JokeApi.getJokeApi(jokeApiService);
+    }
+    @Provides
+    RegisterApi provideRegister(OkHttpClient.Builder builder){
+        builder.addInterceptor(new MyInterceptor());
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.Base_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(builder.build())
+                .build();
+        RegisterApiService registerApiService = retrofit.create(RegisterApiService.class);
+        return RegisterApi.getRegisterApi(registerApiService);
     }
 
 }

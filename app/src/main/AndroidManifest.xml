@@ -64,15 +64,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".GuidanceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".base.BaseActivity" />
-        <activity android:name=".GuidanceActivity"></activity>
+        <activity android:name=".cehua.AttentionActivity" />
+        <activity android:name=".login.LoginActivity" />
+        <activity android:name=".login.LoginSecondActivity" />
+        <activity android:name=".reg.RegsActivity"></activity>
     </application>
 
 </manifest>
