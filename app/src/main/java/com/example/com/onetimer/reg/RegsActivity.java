@@ -1,6 +1,7 @@
 package com.example.com.onetimer.reg;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,15 +18,16 @@ import com.example.com.onetimer.bean.RegisterBean;
 import com.example.com.onetimer.component.DaggerHttpComponent;
 import com.example.com.onetimer.login.LoginActivity;
 import com.example.com.onetimer.login.LoginSecondActivity;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 public class RegsActivity extends BaseActivity<RegisterPresenter> implements View.OnClickListener,RegisterContract.View {
-
     private ImageView back;
     private TextView oktxt;
     private EditText mobile;
     private EditText password;
     private Button regbtn;
     private TextView yoke;
+    private SimpleDraweeView simpleimg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,8 @@ public class RegsActivity extends BaseActivity<RegisterPresenter> implements Vie
         regbtn.setOnClickListener(this);
         yoke = findViewById(R.id.yoke);
         yoke.setOnClickListener(this);
+        simpleimg = findViewById(R.id.simpleimg);
+        simpleimg.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.login)).build());
     }
 
     @Override

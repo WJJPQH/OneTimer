@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group
-        android:checkableBehavior="single">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
 
     </group>
     <item
@@ -21,5 +21,43 @@
         android:id="@+id/file"
         android:icon="@drawable/raw_1499947389"
         android:title="   消息通知"/>
+    <item
+
+        android:title="   "/>
+    <item
+
+        android:title="   "/>
+    <item
+
+        android:title="   "/>
+    <item
+
+        android:title="   "/>
+    <item
+
+        android:title="   "/>
+    <item
+
+        android:title="   "/>
+    <item
+
+        android:title="   " />
+    <item
+
+        android:title="   "/>
+    <item
+
+        android:title="   "/>
+    <item
+
+        android:title="   "/>
+    <item
+
+        android:title="   "/>
+
+    <item
+        android:id="@+id/night"
+        android:icon="@drawable/yl"
+        android:title="   夜间模式" />
 
 </menu>

@@ -33,11 +33,11 @@
 
         <ImageView
             android:id="@+id/bianji"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="40dp"
             android:src="@drawable/raw_1500034665"
             android:layout_alignParentRight="true" />
     </RelativeLayout>
@@ -96,10 +96,19 @@
         app:headerLayout="@layout/head"
         app:menu="@menu/new_menu"
         >
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/list_item"
-            ></ListView>
+        <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/raw_1499947056"
+        android:layout_marginTop="1000dp"
+        android:layout_marginLeft="20dp"
+        />
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/raw_1499947157"
+            android:layout_marginTop="1000dp"
+            android:layout_marginLeft="240dp"
+            />
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

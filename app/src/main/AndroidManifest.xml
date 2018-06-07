@@ -75,7 +75,39 @@
         <activity android:name=".cehua.AttentionActivity" />
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".login.LoginSecondActivity" />
-        <activity android:name=".reg.RegsActivity"></activity>
+        <activity android:name=".reg.RegsActivity" />
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent1106868124" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.umeng.socialize.editorpage.ShareActivity"
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.NoTitleBar" />
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5aaf6a54f29d984ca4000148" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="1106871740" />
+
+        <activity android:name=".compile.CompileActivity" />
+        <activity android:name=".compile.VideoActivity"></activity>
     </application>
 
 </manifest>
