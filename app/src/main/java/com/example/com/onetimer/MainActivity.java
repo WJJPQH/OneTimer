@@ -9,6 +9,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -20,10 +21,13 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.com.onetimer.cehua.AttentionActivity;
+import com.example.com.onetimer.compile.CompileActivity;
 import com.example.com.onetimer.duanzi.CrossFragment;
 import com.example.com.onetimer.login.LoginActivity;
 import com.example.com.onetimer.recommend.fragment.Fragment_recommend;
+import com.example.com.onetimer.utils.SharedPreferencesUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -47,7 +51,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CrossFragment crossFragment;
     private List<String> list;
     private SimpleDraweeView person;
+    private TextView user_name;
     private Fragment_recommend remmendFragment;
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         crossFragment = new CrossFragment();
         remmendFragment=new Fragment_recommend();
         fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.framlayout,remmendFragment).commit();
         setListener();
         initWindow();
     }
@@ -80,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTouxiang.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.touxiang)).build());
         mTitleName = (TextView) findViewById(R.id.title_name);
         mBianji = (ImageView) findViewById(R.id.bianji);
+        mBianji.setOnClickListener(this);
         mFramlayout = (FrameLayout) findViewById(R.id.framlayout);
         mTuijian = (RadioButton) findViewById(R.id.tuijian);
         mDuanzi = (RadioButton) findViewById(R.id.duanzi);
@@ -88,9 +96,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         navigationView = findViewById(R.id.nav);
         View headerView = navigationView.getHeaderView(0);
         person  = headerView.findViewById(R.id.person);
-//        Glide.with(this).load(R.drawable.touxiang).into(person);
+        user_name = headerView.findViewById(R.id.yoname);
+        user_name.setText("我爱");
         person.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.touxiang)).build());
         person.setOnClickListener(this);
+        uid = (String) SharedPreferencesUtils.getParam(MainActivity.this, "uid", "");
+        if (!TextUtils.isEmpty(uid)) {
+            String mobile = (String) SharedPreferencesUtils.getParam(MainActivity.this, "mobile", "");
+            String icon = (String) SharedPreferencesUtils.getParam(MainActivity.this,"icon","");
+            user_name.setText(mobile);
+//            Glide.with(MainActivity.this).load(icon).into(person);
+            person.setImageURI(icon);
+
+        }else {
+            String name = (String) SharedPreferencesUtils.getParam(MainActivity.this, "name", "");
+            user_name.setText(name);
+        }
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -111,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId) {
                     case R.id.tuijian:
+                        mTitleName.setText("推荐");
                         fragmentManager.beginTransaction().replace(R.id.framlayout,remmendFragment).commit();
                         break;
                     case R.id.duanzi:
@@ -125,6 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -137,9 +160,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     drawerLayout.openDrawer(navigationView);
                 }
                 break;
+            case R.id.bianji:
+                Intent intent2 = new Intent(MainActivity.this, CompileActivity.class);
+                startActivity(intent2);
+                break;
             case R.id.person:
-                Intent intent  =new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
+                uid = (String) SharedPreferencesUtils.getParam(MainActivity.this, "uid", "");
+                if (!TextUtils.isEmpty(uid)) {
+                    //登录过
+                  Toast.makeText(MainActivity.this,"登录过了",Toast.LENGTH_SHORT).show();
+                } else {
+                    //未登录
+                    Intent intent  =new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+
                 break;
         }
     }

@@ -9,13 +9,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.com.onetimer.MainActivity;
 import com.example.com.onetimer.R;
+import com.example.com.onetimer.base.BaseActivity;
+import com.example.com.onetimer.bean.LoginBean;
+import com.example.com.onetimer.component.DaggerHttpComponent;
 import com.example.com.onetimer.reg.RegsActivity;
+import com.example.com.onetimer.utils.SharedPreferencesUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
 
-public class LoginSecondActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginSecondActivity extends BaseActivity<LoginPresenter> implements View.OnClickListener,LoginContract.View {
 
     private ImageView back;
     private TextView regtxt;
@@ -28,7 +33,13 @@ public class LoginSecondActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_second);
+        initView();
+    }
+    @Override
+    public int getContentLayout() {
+        return R.layout.activity_login_second;
+    }
+    public void initView(){
         back = findViewById(R.id.back);
         back.setOnClickListener(this);
         regtxt = findViewById(R.id.regtxt);
@@ -46,7 +57,6 @@ public class LoginSecondActivity extends AppCompatActivity implements View.OnCli
         simpleimg = findViewById(R.id.simpleimg);
         simpleimg.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.login)).build());
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -60,6 +70,13 @@ public class LoginSecondActivity extends AppCompatActivity implements View.OnCli
             case R.id.forget:
                 break;
             case R.id.loginbtn:
+                String mobiles = username.getText().toString();
+                String passwords = password.getText().toString();
+                mPresenter.getLogin(mobiles, passwords);
+                Intent intent3 = new Intent(LoginSecondActivity.this, MainActivity.class);
+                intent3.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent3);
+                LoginSecondActivity.this.finish();
                 break;
             case R.id.yoke:
                 Intent intent2 = new Intent(LoginSecondActivity.this, MainActivity.class);
@@ -70,5 +87,24 @@ public class LoginSecondActivity extends AppCompatActivity implements View.OnCli
                 default:
                     break;
         }
+    }
+
+
+
+    @Override
+    public void inject() {
+        DaggerHttpComponent.builder()
+                .build()
+                .inject(this);
+    }
+
+    @Override
+    public void onLoginSuccess(LoginBean loginBean) {
+        Toast.makeText(LoginSecondActivity.this,loginBean.getMsg(),Toast.LENGTH_LONG).show();
+        SharedPreferencesUtils.setParam(LoginSecondActivity.this,"uid",loginBean.getData().getUid() + "");
+        SharedPreferencesUtils.setParam(LoginSecondActivity.this,"mobile",loginBean.getData().getMobile() + "");
+        SharedPreferencesUtils.setParam(LoginSecondActivity.this,"icon",loginBean.getData().getIcon() + "");
+        SharedPreferencesUtils.setParam(LoginSecondActivity.this,"token",loginBean.getData().getToken() + "");
+
     }
 }
