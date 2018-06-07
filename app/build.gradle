@@ -4,8 +4,8 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.com.onetimer"
-        minSdkVersion 15
-        targetSdkVersion 27
+        minSdkVersion 16
+        targetSdkVersion 2
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -43,4 +43,5 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
     compile 'com.github.bumptech.glide:glide:3.6.1'
     implementation files('libs/umeng-common-1.5.1.jar')
+    compile 'fm.jiecao:jiecaovideoplayer:5.5'
 }

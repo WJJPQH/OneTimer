@@ -4,9 +4,12 @@
     android:layout_height="match_parent"
     xmlns:face="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="50dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/recommend_click"
         android:layout_height="50dp">
 
         <com.facebook.drawee.view.SimpleDraweeView
@@ -39,17 +42,17 @@
                 android:text="2017-5-27 14:15"
                 android:textSize="10dp" />
         </LinearLayout>
-
+    </LinearLayout>
         <ImageView
+            android:id="@+id/recomend_jia"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="19dp"
-            android:src="@drawable/jia"
-            android:id="@+id/recomend_jia"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="19dp" />
+            android:layout_marginRight="19dp"
+            android:src="@drawable/jia" />
     </RelativeLayout>
     <TextView
         android:layout_width="match_parent"
@@ -57,21 +60,23 @@
         android:padding="5dp"
         android:id="@+id/recomend_title"
         android:text="天气美美的,适合交友"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp">
-        <VideoView
+        android:layout_height="216dp">
+
+        <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
+            android:id="@+id/recomend_video"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/recomend_video"/>
+            android:layout_height="270dp" />
 
         <LinearLayout
             android:layout_width="30dp"
-            android:layout_height="match_parent"
+            android:layout_height="250dp"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:orientation="vertical"
-            android:layout_alignParentRight="true">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="30dp"
@@ -80,9 +85,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
                     android:id="@+id/like_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp"
                     android:src="@drawable/raw_1499933216" />
 
                 <TextView
@@ -100,9 +105,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
                     android:id="@+id/seek_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="27dp"
                     android:src="@drawable/raw_1499947358" />
 
                 <TextView
@@ -122,7 +127,7 @@
                 <ImageView
                     android:id="@+id/share"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="27dp"
                     android:src="@drawable/raw_1499995160" />
 
                 <TextView
@@ -142,7 +147,7 @@
                 <ImageView
                     android:id="@+id/comment"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="26dp"
                     android:src="@drawable/raw_1499933789" />
 
                 <TextView
@@ -150,7 +155,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="1.1万" />
+                    android:text="1.1万"
+                    android:textSize="10dp" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

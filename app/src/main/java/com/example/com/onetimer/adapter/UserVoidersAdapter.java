@@ -10,34 +10,32 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.bumptech.glide.Glide;
 import com.example.com.onetimer.R;
 import com.example.com.onetimer.bean.RecommendBean;
 import com.example.com.onetimer.onlick.OnItreamClickListener;
+import com.example.com.onetimer.recommend.contract.UserVideosContract;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
-import okhttp3.internal.http.HttpMethod;
 
-public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class UserVoidersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final LayoutInflater inflater;
-    private List<RecommendBean.DataBean> list;
+    private RecommendBean.DataBean list;
     private Context context;
     private boolean like_pd=false;
     private boolean seek_pd=false;
+    List<UserVideosBean.DataBean> userlist;
     private OnItreamClickListener onItreamClickListener;
-    public RecommendAdapter(List<RecommendBean.DataBean> list, Context context) {
+    public UserVoidersAdapter(RecommendBean.DataBean list, Context context, List<UserVideosBean.DataBean> userlist) {
         this.list = list;
         this.context = context;
+        this.userlist=userlist;
          inflater= LayoutInflater.from(context);
     }
     public void setOnItemClickListener(OnItreamClickListener onItemClickListener){
@@ -56,7 +54,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
             final MyViewHolder holder1= (MyViewHolder) holder;
             //赋值
-            holder1.tx.setImageURI(list.get(position).getUser().getIcon());
+            holder1.tx.setImageURI(list.getUser().getIcon());
         holder1.ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,11 +65,11 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         });
 
 
-        holder1.name.setText(list.get(position).getUser().getNickname());
-            holder1.time.setText(list.get(position).getCreateTime());
-            holder1.title.setText(list.get(position).getWorkDesc());
+        holder1.name.setText(list.getUser().getNickname());
+            holder1.time.setText(userlist.get(position).getCreateTime());
+            holder1.title.setText(list.getWorkDesc());
         holder1.voideo.TOOL_BAR_EXIST = false;
-        holder1.voideo.setUp(list.get(position).getVideoUrl()
+        holder1.voideo.setUp(userlist.get(position).getVideoUrl()
                 , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "看什么没有标题啦!");
 //        jcVideoPlayerStandard.loop  = true;//是否循环播放
         Glide.with(context).load("http://p.qpic.cn/videoyun/0/2449_43b6f696980311e59ed467f22794e792_1/640")
@@ -80,12 +78,12 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 //        JCVideoPlayerStandard.startFullscreen(this, JCVideoPlayerStandard.class, "http://2449.vod.myqcloud.com/2449_22ca37a6ea9011e5acaaf51d105342e3.f20.mp4", "嫂子辛苦了");
         //直接进入全屏
 
-        if(list.get(position).getComments()!=null){
+        if(list.getComments()!=null){
             return;
         }else{
-            for (int i=0;i<list.get(position).getComments().size();i++){
+            for (int i=0;i<list.getComments().size();i++){
                 TextView view=new TextView(context);
-                view.setText(list.get(position).getComments().get(i).getNickname()+" : "+list.get(position).getComments().get(i).getContent());
+                view.setText(list.getComments().get(i).getNickname()+" : "+list.getComments().get(i).getContent());
                 view.setPadding(5,5,5,5);
                 holder1.comment_qu.addView(view);
             }
@@ -135,7 +133,7 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
     @Override
     public int getItemCount() {
-        return list.size();
+        return userlist.size();
     }
     class MyViewHolder extends RecyclerView.ViewHolder{
 
@@ -163,13 +161,13 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
     }
     //刷新
-    public  void refresh(List<RecommendBean.DataBean> temlist){
-        this.list.clear();
-        this.list.addAll(temlist);
+    public  void refresh(List<UserVideosBean.DataBean> temlist){
+        this.userlist.clear();
+        this.userlist.addAll(temlist);
     }
     //加载更多
-    public  void loadMore(List<RecommendBean.DataBean> list){
-        this.list.addAll(list);
+    public  void loadMore(List<UserVideosBean.DataBean> list){
+        this.userlist.addAll(list);
         notifyDataSetChanged();
     }
 }
