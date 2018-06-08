@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:face="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ParticularsActivity">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:id="@+id/bjt"
+        android:scaleType="fitXY"
+        android:src="@drawable/ww"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true">
+
+        <ImageView
+            android:id="@+id/particulars_fh"
+            android:layout_width="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="22dp"
+            android:src="@drawable/fh"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="22dp" />
+
+        <TextView
+            android:id="@+id/particulars_title_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="MC 跨足令" />
+
+        <ImageView
+            android:id="@+id/particulars_share"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/raw_1499995160" />
+    </RelativeLayout>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/particulars_title_tx"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="73dp"
+        face:roundAsCircle="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="26dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bjt"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/fs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18595447 粉丝" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="|"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/user_gz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="17 粉丝" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/but_gz"
+        android:layout_width="150dp"
+        android:layout_height="19dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="135dp"
+        android:background="@drawable/buttonstyle"
+        android:gravity="center"
+        android:text="+关注"
+        android:textColor="#96DBFA" />
+
+    <TextView
+        android:id="@+id/particulars_zp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="161dp"
+        android:text="作品(3)"
+        android:textColor="#90D9FA"
+        android:textSize="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="71dp" />
+
+    <RelativeLayout
+        android:id="@+id/dz"
+        android:layout_width="50dp"
+        android:layout_height="53dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/bjt"
+        android:layout_marginEnd="13dp"
+        android:background="@drawable/dianzan"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="13dp">
+
+        <ImageView
+            android:id="@+id/ddz"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/dz1" />
+
+        <TextView
+            android:id="@+id/dz_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="16"
+            android:layout_below="@id/ddz"
+            android:textSize="10dp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/ht"
+        android:layout_below="@+id/particulars_zp"
+        android:background="#DEDEDE"
+        android:layout_alignParentLeft="true"></LinearLayout>
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/particulars_rlv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ht"
+        android:layout_alignParentLeft="true"></com.jcodecraeer.xrecyclerview.XRecyclerView>
+</RelativeLayout>

@@ -1,8 +1,12 @@
 package com.example.com.onetimer.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class RecommendBean {
+public  class  RecommendBean implements Serializable{
 
     /**
      * msg : 获取热门作品列表成功
@@ -38,7 +42,7 @@ public class RecommendBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class  DataBean implements Serializable {
         /**
          * commentNum : 1
          * comments : [{"cid":239,"content":"1","createTime":"2018-01-10T19:50:05","jid":null,"mvp":null,"nickname":"qqq","praiseNum":0,"uid":71,"wid":100}]
@@ -193,7 +197,8 @@ public class RecommendBean {
             this.comments = comments;
         }
 
-        public static class UserBean {
+
+        public static class UserBean implements Serializable{
             /**
              * age : null
              * fans : null
@@ -259,7 +264,7 @@ public class RecommendBean {
             }
         }
 
-        public static class CommentsBean {
+        public static class CommentsBean implements Serializable{
             /**
              * cid : 239
              * content : 1

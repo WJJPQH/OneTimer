@@ -1,5 +1,7 @@
 package com.example.com.onetimer.recommend.net;
 
+import com.example.com.onetimer.adapter.UserVideosBean;
+import com.example.com.onetimer.bean.AttentionBean;
 import com.example.com.onetimer.bean.RecommendBean;
 
 import io.reactivex.Observable;
@@ -20,5 +22,11 @@ public class RecommendApi {
     }
     public Observable<RecommendBean> getRecommend(String page){
         return recommendApiServiece.getRecommend(page);
+    }
+    public Observable<AttentionBean> getAttention(String uid,String token){
+        return recommendApiServiece.getAttention(uid,token);
+    }
+    public Observable<UserVideosBean> getUserVideos(String uid, String page){
+        return recommendApiServiece.getUserVideos(uid,page);
     }
 }
