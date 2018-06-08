@@ -124,7 +124,8 @@
             android:layout_toEndOf="@+id/yoke"
             android:text="忘记密码"
             android:textColor="#ffffff"
-            tools:ignore="NotSibling" />
+            tools:ignore="NotSibling"
+            android:layout_toRightOf="@+id/yoke" />
 
         <TextView
             android:id="@+id/yoke"

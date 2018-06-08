@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.com.onetimer">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.com.onetimer"
+    android:versionCode="1"
+    android:versionName="1.0">
 
     <uses-permission android:name="com.gcg.grirms.permission.JPUSH_MESSAGE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
@@ -14,7 +17,8 @@
     <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -22,7 +26,8 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_UPDATES" />
     <uses-permission android:name="android.permission.PERSISTENT_ACTIVITY" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
@@ -37,8 +42,10 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION"
+        tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
 
     <uses-feature android:name="android.hardware.camera" />
@@ -51,10 +58,9 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <!-- 读联系人权限 -->
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <!-- 写联系人权限 -->
-    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="18" />
 
     <application
         android:name=".myapp.MyApp"
@@ -107,7 +113,8 @@
             android:value="1106871740" />
 
         <activity android:name=".compile.CompileActivity" />
-        <activity android:name=".compile.VideoActivity"></activity>
+        <activity android:name=".compile.VideoActivity"/>
+        <activity android:name=".compile.VideoRead"/>
     </application>
 
 </manifest>

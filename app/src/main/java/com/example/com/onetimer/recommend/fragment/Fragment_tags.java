@@ -56,7 +56,7 @@ public class Fragment_tags extends BaseFragment<RecommendPersenter> implements R
         banner.start();
         mPresenter.getRecommend(""+10);
         //设置布局管理器
-        GridLayoutManager gridLayoutManager=new GridLayoutManager(getContext(),1,RecyclerView.VERTICAL,false);
+        GridLayoutManager gridLayoutManager=new GridLayoutManager(getActivity(),1,RecyclerView.VERTICAL,false);
         rlv.setLayoutManager(gridLayoutManager);
     }
     @Override
