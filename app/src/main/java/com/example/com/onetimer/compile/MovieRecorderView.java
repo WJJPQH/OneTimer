@@ -47,7 +47,7 @@ public class MovieRecorderView extends LinearLayout implements OnErrorListener {
     private int mHeight;// 视频分辨率高度
     private boolean isOpenCamera;// 是否一开始就打开摄像头
     private int mRecordMaxTime;// 一次拍摄最长时间
-    private int mTimeCount;// 时间计数
+    private int mTimeCount=0;// 时间计数
     private File mVecordFile = null;// 文件
 
     public MovieRecorderView(Context context) {
@@ -215,15 +215,18 @@ public class MovieRecorderView extends LinearLayout implements OnErrorListener {
         mMediaRecorder.setOrientationHint(90);// 输出旋转90度，保持竖屏录制
         // 设置图像编码的格式
         mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
-        mMediaRecorder.setVideoSize(mWidth, mHeight);
+        //mMediaRecorder.setVideoSize(mWidth, mHeight);
         // 每秒 4帧
         //mMediaRecorder.setVideoFrameRate(20);
         mMediaRecorder.setOutputFile(mVecordFile.getAbsolutePath());
-        mMediaRecorder.prepare();
+
         try {
+            mMediaRecorder.prepare();
             mMediaRecorder.start();
         } catch (IllegalStateException e) {
-            e.printStackTrace();
+            mMediaRecorder = null;
+            mMediaRecorder = new MediaRecorder();
+            mMediaRecorder.start();
         } catch (RuntimeException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -294,7 +297,10 @@ public class MovieRecorderView extends LinearLayout implements OnErrorListener {
             try {
                 mMediaRecorder.stop();
             } catch (IllegalStateException e) {
-                e.printStackTrace();
+//                e.printStackTrace();
+                mMediaRecorder = null;
+                mMediaRecorder = new MediaRecorder();
+                mMediaRecorder.stop();
             } catch (RuntimeException e) {
                 e.printStackTrace();
             } catch (Exception e) {

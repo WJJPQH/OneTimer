@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.example.com.onetimer.MainActivity;
@@ -41,6 +42,8 @@ public class AttentionActivity extends BaseActivity<AttentionPersenter> implemen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         //获取uid
         uid = (String) SharedPreferencesUtils.getParam(this, "uid", "");
         token = (String) SharedPreferencesUtils.getParam(this, "token", "");

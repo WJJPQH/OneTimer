@@ -30,6 +30,7 @@ import com.example.com.onetimer.login.LoginActivity;
 import com.example.com.onetimer.login.LoginSecondActivity;
 import com.example.com.onetimer.recommend.fragment.Fragment_recommend;
 import com.example.com.onetimer.utils.SharedPreferencesUtils;
+import com.example.com.onetimer.video.VideoFragment;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView user_name;
     private Fragment_recommend remmendFragment;
     private String uid;
+    private VideoFragment videoFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initView();
         crossFragment = new CrossFragment();
         remmendFragment=new Fragment_recommend();
+        videoFragment = new VideoFragment();
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.framlayout,remmendFragment).commit();
         setListener();
@@ -157,6 +160,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.makeText(MainActivity.this,"点击",Toast.LENGTH_LONG).show();
                         break;
                     case R.id.shipin:
+                        mTitleName.setText("视频");
+                        fragmentManager.beginTransaction().replace(R.id.framlayout,videoFragment).commit();
                         break;
                 }
             }

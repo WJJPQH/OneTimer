@@ -1,11 +1,15 @@
 package com.example.com.onetimer.module;
 
 import com.example.com.onetimer.net.Api;
+import com.example.com.onetimer.net.HotVideosApi;
+import com.example.com.onetimer.net.HotVideosApiService;
 import com.example.com.onetimer.net.JokeApi;
 import com.example.com.onetimer.net.JokeApiService;
 import com.example.com.onetimer.net.LoginApi;
 import com.example.com.onetimer.net.LoginApiService;
 import com.example.com.onetimer.net.MyInterceptor;
+import com.example.com.onetimer.net.NearVideosApi;
+import com.example.com.onetimer.net.NearVideosApiService;
 import com.example.com.onetimer.net.RegisterApi;
 import com.example.com.onetimer.net.RegisterApiService;
 import com.example.com.onetimer.recommend.net.RecommendApi;
@@ -79,6 +83,30 @@ public class HttpModule {
                 .build();
         LoginApiService loginApiService = retrofit.create(LoginApiService.class);
         return LoginApi.getLoginApi(loginApiService);
+    }
+    @Provides
+    HotVideosApi provideHotVideos(OkHttpClient.Builder builder){
+        builder.addInterceptor(new MyInterceptor());
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.Base_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(builder.build())
+                .build();
+        HotVideosApiService hotVideosApiService = retrofit.create(HotVideosApiService.class);
+        return HotVideosApi.getHotVideosApi(hotVideosApiService);
+    }
+    @Provides
+    NearVideosApi provideNearVideos(OkHttpClient.Builder builder){
+        builder.addInterceptor(new MyInterceptor());
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.Base_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(builder.build())
+                .build();
+        NearVideosApiService nearVideosApiService = retrofit.create(NearVideosApiService.class);
+        return NearVideosApi.getNearVideosApi(nearVideosApiService);
     }
 
 }

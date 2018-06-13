@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -97,6 +98,7 @@ public class ParticularsActivity extends BaseActivity<UserVideosPersenter> imple
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         initView();
         Intent intent = getIntent();
         sb = intent.getIntExtra("sb", 0);

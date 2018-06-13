@@ -8,6 +8,8 @@ import com.example.com.onetimer.recommend.fragment.Fragment_attention;
 import com.example.com.onetimer.reg.RegsActivity;
 import com.example.com.onetimer.recommend.fragment.Fragment_tags;
 import com.example.com.onetimer.ui.ParticularsActivity;
+import com.example.com.onetimer.video.HotVideoFragment;
+import com.example.com.onetimer.video.NearbyFragment;
 
 import dagger.Component;
 
@@ -19,5 +21,7 @@ public interface HttpComponent {
     void inject(LoginSecondActivity loginSecondActivity);
     void inject(Fragment_attention fragment_attention);
     void inject(ParticularsActivity particularsActivity);
+    void inject(HotVideoFragment hotVideoFragment);
+    void inject(NearbyFragment nearbyFragment);
     void inject(AttentionActivity attentionActivity);
 }
