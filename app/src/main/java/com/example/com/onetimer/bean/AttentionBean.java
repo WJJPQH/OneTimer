@@ -1,8 +1,9 @@
 package com.example.com.onetimer.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class AttentionBean {
+public class AttentionBean implements Serializable {
 
     /**
      * msg : 获取关注用户列表成功
@@ -38,7 +39,7 @@ public class AttentionBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * age : null
          * appkey : 07258a7bbfd8b132

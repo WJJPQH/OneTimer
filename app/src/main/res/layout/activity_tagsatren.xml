@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".attention.TagsatrenActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="#03A9F4"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/rmgz_fh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="14dp"
+            android:text="取消" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:layout_centerInParent="true"
+            android:text="热门关注" />
+
+        <EditText
+            android:id="@+id/rmgz_edt"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/ss_styles"
+            android:textSize="12dp"
+            android:hint="输入关键字" />
+
+        <ImageView
+            android:id="@+id/rmgz_ss"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ss" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <!--fixed：固定的 不能够滑动
+            app:tabGravity="center"    设置居中对齐
+            app:tabIndicatorColor="@color/colorAccent" 下滑线的颜色
+            app:tabMode="scrollable"  设置tabLayoout菜单的模式,,,scrollable可以横向滚动
+            app:tabSelectedTextColor="@color/colorPrimaryDark"  选中的时候文字的颜色
+            app:tabTextColor="@color/colorPrimary"       文本默认的颜色
+
+
+            app:tabGravity="fill" :填充
+            app:tabMode="fixed"：固定
+
+
+        -->
+        <android.support.design.widget.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mytab"
+            app:tabGravity="center"
+            app:tabIndicatorColor="#fff"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/two"
+            app:tabTextColor="@color/colorPrimary"></android.support.design.widget.TabLayout>
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/vp"
+            android:layout_below="@+id/mytab"></android.support.v4.view.ViewPager>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

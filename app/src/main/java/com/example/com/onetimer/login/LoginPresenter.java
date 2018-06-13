@@ -31,7 +31,9 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
 
                     @Override
                     public void onNext(LoginBean loginBean) {
-                        mView.onLoginSuccess(loginBean);
+                        if(mView!=null) {
+                            mView.onLoginSuccess(loginBean);
+                        }
                     }
 
                     @Override

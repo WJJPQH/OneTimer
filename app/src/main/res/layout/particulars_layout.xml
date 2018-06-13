@@ -16,12 +16,13 @@
         android:layout_alignParentLeft="true">
 
         <RelativeLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="50dp">
 
             <LinearLayout
                 android:id="@+id/particulars_click"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
@@ -58,17 +59,9 @@
                         android:textSize="10dp" />
                 </LinearLayout>
             </LinearLayout>
-
-            <ImageView
-                android:id="@+id/particulars_jia"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="19dp"
-                android:layout_marginRight="19dp"
-                android:src="@drawable/jia" />
+            <com.example.com.onetimer.myview.CustomerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></com.example.com.onetimer.myview.CustomerView>
         </RelativeLayout>
 
         <TextView

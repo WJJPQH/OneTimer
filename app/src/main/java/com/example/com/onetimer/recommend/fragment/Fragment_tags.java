@@ -116,7 +116,7 @@ public class Fragment_tags extends BaseFragment<RecommendPersenter> implements R
                 RecommendBean.DataBean mylist = recommendBean.getData().get(position);
                 Intent intent=new Intent(getActivity(),ParticularsActivity.class);
                 intent.putExtra("mylist",mylist);
-                intent.putExtra("lo","ppp");
+                intent.putExtra("sb",1);
                 getActivity().startActivity(intent);
             }
 

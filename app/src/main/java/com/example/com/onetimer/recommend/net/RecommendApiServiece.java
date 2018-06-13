@@ -1,6 +1,7 @@
 package com.example.com.onetimer.recommend.net;
 
-import com.example.com.onetimer.adapter.UserVideosBean;
+import com.example.com.onetimer.bean.UserVideosBean;
+import com.example.com.onetimer.base.AttentionUserBean;
 import com.example.com.onetimer.bean.AttentionBean;
 import com.example.com.onetimer.bean.RecommendBean;
 
@@ -21,4 +22,8 @@ public interface RecommendApiServiece {
     @FormUrlEncoded
     @POST("/quarter/getUserVideos")
     Observable<UserVideosBean> getUserVideos(@Field("uid")String uid, @Field("page")String page);
+    //关注用户
+    @FormUrlEncoded
+    @POST("/quarter/follow")
+    Observable<AttentionUserBean> getAttentionUser(@Field("uid")String uid, @Field("wid")String wid,@Field("token")String token);
 }

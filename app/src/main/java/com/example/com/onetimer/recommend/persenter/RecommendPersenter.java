@@ -33,8 +33,9 @@ public class RecommendPersenter extends BasePresenter<RecommendContract.View> im
 
                     @Override
                     public void onNext(RecommendBean recommendBean) {
-
-                            mView.recommendSuccess(recommendBean);
+                          if(mView!=null){
+                              mView.recommendSuccess(recommendBean);
+                          }
 
                     }
 

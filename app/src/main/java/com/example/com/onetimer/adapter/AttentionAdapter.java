@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.example.com.onetimer.R;
 import com.example.com.onetimer.bean.AttentionBean;
 import com.example.com.onetimer.bean.RecommendBean;
+import com.example.com.onetimer.onlick.OnItreamClickListener;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class AttentionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private Context context;
     private boolean like_pd=false;
     private boolean seek_pd=false;
+    private OnItreamClickListener onItreamClickListener;
     public AttentionAdapter(List<AttentionBean.DataBean> list, Context context) {
         this.list = list;
         this.context = context;
@@ -42,14 +44,25 @@ public class AttentionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         MyViewHolder myViewHolder=new MyViewHolder(view);
         return myViewHolder;
     }
+    public void setOnItemClickListener(OnItreamClickListener onItemClickListener){
+        this.onItreamClickListener=onItemClickListener;
 
+    }
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
             final MyViewHolder holder1= (MyViewHolder) holder;
             //赋值
             holder1.tx.setImageURI(list.get(position).getIcon());
             holder1.name.setText(list.get(position).getUsername());
             holder1.time.setText(list.get(position).getCreatetime());
+            holder1.tx.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(onItreamClickListener!=null){
+                        onItreamClickListener.onItemClick(position);
+                    }
+                }
+            });
             //holder1.title.setText(list.get(position).getWorkDesc());
        // holder1.voideo.TOOL_BAR_EXIST = false;
        // holder1.voideo.setUp(list.get(position).getVideoUrl()
@@ -141,5 +154,14 @@ public class AttentionAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             seek=itemView.findViewById(R.id.seek_img);
         }
     }
-
+    //刷新
+    public  void refresh(List<AttentionBean.DataBean> temlist){
+        this.list.clear();
+        this.list.addAll(temlist);
+    }
+    //加载更多
+    public  void loadMore(List<AttentionBean.DataBean> list){
+        this.list.addAll(list);
+        notifyDataSetChanged();
+    }
 }

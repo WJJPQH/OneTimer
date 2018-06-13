@@ -1,5 +1,6 @@
 package com.example.com.onetimer.component;
 
+import com.example.com.onetimer.attention.AttentionActivity;
 import com.example.com.onetimer.duanzi.CrossFragment;
 import com.example.com.onetimer.login.LoginSecondActivity;
 import com.example.com.onetimer.module.HttpModule;
@@ -18,4 +19,5 @@ public interface HttpComponent {
     void inject(LoginSecondActivity loginSecondActivity);
     void inject(Fragment_attention fragment_attention);
     void inject(ParticularsActivity particularsActivity);
+    void inject(AttentionActivity attentionActivity);
 }
