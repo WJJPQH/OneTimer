@@ -1,4 +1,6 @@
 package com.example.com.onetimer;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -21,11 +23,11 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.example.com.onetimer.cehua.AttentionActivity;
+import com.example.com.onetimer.attention.AttentionActivity;
 import com.example.com.onetimer.compile.CompileActivity;
 import com.example.com.onetimer.duanzi.CrossFragment;
 import com.example.com.onetimer.login.LoginActivity;
+import com.example.com.onetimer.login.LoginSecondActivity;
 import com.example.com.onetimer.recommend.fragment.Fragment_recommend;
 import com.example.com.onetimer.utils.SharedPreferencesUtils;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -117,8 +119,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Toast.makeText(MainActivity.this,item.getTitle().toString(),Toast.LENGTH_SHORT).show();
                 if(item.getItemId()==R.id.wallet){
-                    Intent intent =new Intent(MainActivity.this, AttentionActivity.class);
-                    startActivity(intent);
+                    uid = (String) SharedPreferencesUtils.getParam(MainActivity.this, "uid", "");
+                    if(uid.equals("")){
+                        new AlertDialog.Builder(MainActivity.this).setTitle("抱歉您还没有登录!")
+                                .setPositiveButton("立即登录", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Intent intent=new Intent(MainActivity.this, LoginSecondActivity.class);
+                                        startActivity(intent);
+                                    }
+                                }).setNegativeButton("取消", null).show();
+
+                    }else{
+                        Intent intent =new Intent(MainActivity.this, AttentionActivity.class);
+                        startActivity(intent);
+                    }
+
                 }
                 drawerLayout.closeDrawer(navigationView);
                 return true;

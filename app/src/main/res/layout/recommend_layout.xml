@@ -43,16 +43,9 @@
                 android:textSize="10dp" />
         </LinearLayout>
     </LinearLayout>
-        <ImageView
-            android:id="@+id/recomend_jia"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="19dp"
-            android:layout_marginRight="19dp"
-            android:src="@drawable/jia" />
+        <com.example.com.onetimer.myview.CustomerView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></com.example.com.onetimer.myview.CustomerView>
     </RelativeLayout>
     <TextView
         android:layout_width="match_parent"

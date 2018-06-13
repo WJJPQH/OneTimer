@@ -15,24 +15,23 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.com.onetimer.R;
-import com.example.com.onetimer.bean.RecommendBean;
+import com.example.com.onetimer.bean.AttentionBean;
 import com.example.com.onetimer.bean.UserVideosBean;
-import com.example.com.onetimer.onlick.OnItreamClickListener;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
-public class UserVoidersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class UserVoidersAdapter2 extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final LayoutInflater inflater;
-    private static RecommendBean.DataBean list;
+    private static AttentionBean.DataBean list;
     private Context context;
     private boolean like_pd=false;
     private boolean seek_pd=false;
     List<UserVideosBean.DataBean> userlist;
 
-    public UserVoidersAdapter(RecommendBean.DataBean list, Context context, List<UserVideosBean.DataBean> userlist) {
+    public UserVoidersAdapter2(AttentionBean.DataBean list, Context context, List<UserVideosBean.DataBean> userlist) {
         this.list = list;
         this.context = context;
         this.userlist=userlist;
@@ -51,7 +50,7 @@ public class UserVoidersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
             final MyViewHolder holder1= (MyViewHolder) holder;
             //赋值
-            holder1.tx.setImageURI(list.getUser().getIcon());
+            holder1.tx.setImageURI(list.getIcon());
         holder1.tx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -60,9 +59,9 @@ public class UserVoidersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
         });
 
 
-        holder1.name.setText(list.getUser().getNickname());
+        holder1.name.setText(list.getNickname()+"");
             holder1.time.setText(userlist.get(position).getCreateTime());
-            holder1.title.setText(list.getWorkDesc());
+            holder1.title.setText(""+null);
         holder1.voideo.TOOL_BAR_EXIST = false;
         holder1.voideo.setUp(userlist.get(position).getVideoUrl()
                 , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "看什么没有标题啦!");
@@ -72,17 +71,6 @@ public class UserVoidersAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
 //        JCVideoPlayerStandard.startFullscreen(this, JCVideoPlayerStandard.class, "http://2449.vod.myqcloud.com/2449_22ca37a6ea9011e5acaaf51d105342e3.f20.mp4", "嫂子辛苦了");
         //直接进入全屏
-
-        if(list.getComments()!=null){
-            return;
-        }else{
-            for (int i=0;i<list.getComments().size();i++){
-                TextView view=new TextView(context);
-                view.setText(list.getComments().get(i).getNickname()+" : "+list.getComments().get(i).getContent());
-                view.setPadding(5,5,5,5);
-                holder1.comment_qu.addView(view);
-            }
-        }
         holder1.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

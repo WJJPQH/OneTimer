@@ -1,4 +1,4 @@
-package com.example.com.onetimer.adapter;
+package com.example.com.onetimer.bean;
 
 import java.util.List;
 
