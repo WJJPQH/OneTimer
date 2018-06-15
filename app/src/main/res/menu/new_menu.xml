@@ -21,39 +21,16 @@
         android:id="@+id/file"
         android:icon="@drawable/raw_1499947389"
         android:title="   消息通知"/>
+
+
+
     <item
 
         android:title="   "/>
     <item
 
         android:title="   "/>
-    <item
 
-        android:title="   "/>
-    <item
-
-        android:title="   "/>
-    <item
-
-        android:title="   "/>
-    <item
-
-        android:title="   "/>
-    <item
-
-        android:title="   " />
-    <item
-
-        android:title="   "/>
-    <item
-
-        android:title="   "/>
-    <item
-
-        android:title="   "/>
-    <item
-
-        android:title="   "/>
 
     <item
         android:id="@+id/night"

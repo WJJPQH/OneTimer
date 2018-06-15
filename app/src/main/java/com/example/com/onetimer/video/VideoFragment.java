@@ -13,30 +13,51 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.com.onetimer.R;
+import com.example.com.onetimer.base.BaseFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class VideoFragment extends Fragment {
+public class VideoFragment extends BaseFragment {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private List<String> list;
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.video_fragment,null);
-        tabLayout = view.findViewById(R.id.tab);
-        viewPager = view.findViewById(R.id.viewpager);
-        inittab();
-        viewPager.setAdapter(new MyAdapter(getActivity().getSupportFragmentManager()));
-        tabLayout.setupWithViewPager(viewPager);
-        return view;
-    }
+//    @Nullable
+//    @Override
+//    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        View view = inflater.inflate(R.layout.video_fragment,null);
+//
+//
+//        return view;
+//    }
+
+
     private void inittab() {
         list = new ArrayList<>();
         list.add("热门");
         list.add("附近");
     }
+
+    @Override
+    public int getContentLayout() {
+        return R.layout.video_fragment;
+    }
+
+    @Override
+    public void inject() {
+
+    }
+
+    @Override
+    public void initView(View view) {
+        tabLayout = view.findViewById(R.id.tab);
+        viewPager = view.findViewById(R.id.viewpager);
+        inittab();
+        viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
+        tabLayout.setupWithViewPager(viewPager);
+    }
+
     class MyAdapter extends FragmentPagerAdapter {
 
         public MyAdapter(FragmentManager fm) {

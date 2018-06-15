@@ -41,6 +41,7 @@ public class NearbyFragment extends BaseFragment<NearVideosPresenter> implements
         mPresenter.getNearVideos(token,"1","39.95","116.30");
     }
 
+
     @Override
     public void onNearVideosSuccess(NearVideosBean nearVideosBean) {
         List<NearVideosBean.DataBean> list = nearVideosBean.getData();

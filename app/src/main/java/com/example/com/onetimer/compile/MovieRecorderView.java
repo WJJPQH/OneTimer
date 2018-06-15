@@ -171,7 +171,7 @@ public class MovieRecorderView extends LinearLayout implements OnErrorListener {
     }
 
     private void createRecordDir() {
-        File sampleDir = new File(Environment.getExternalStorageDirectory() + File.separator + "im/video/");
+        File sampleDir = new File(Environment.getExternalStorageDirectory() + File.separator + "video/");
         if (!sampleDir.exists()) {
             sampleDir.mkdirs();
         }
@@ -234,15 +234,6 @@ public class MovieRecorderView extends LinearLayout implements OnErrorListener {
         }
     }
 
-    /**
-     * 开始录制视频
-     *
-     * @author 胡汉三
-     * @param fileName
-     *            视频储存位置
-     * @param onRecordFinishListener
-     *            达到指定时间之后回调接口
-     */
     public void record(final OnRecordFinishListener onRecordFinishListener) {
         this.mOnRecordFinishListener = onRecordFinishListener;
         createRecordDir();

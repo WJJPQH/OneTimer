@@ -29,6 +29,7 @@ import com.example.com.onetimer.duanzi.CrossFragment;
 import com.example.com.onetimer.login.LoginActivity;
 import com.example.com.onetimer.login.LoginSecondActivity;
 import com.example.com.onetimer.recommend.fragment.Fragment_recommend;
+import com.example.com.onetimer.setting.SettingActivity;
 import com.example.com.onetimer.utils.SharedPreferencesUtils;
 import com.example.com.onetimer.video.VideoFragment;
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Fragment_recommend remmendFragment;
     private String uid;
     private VideoFragment videoFragment;
-
+    private ImageView btn_set;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +100,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mShipin = (RadioButton) findViewById(R.id.shipin);
         mGroup = (RadioGroup) findViewById(R.id.group);
         navigationView = findViewById(R.id.nav);
+        btn_set = findViewById(R.id.btn_set);
+        btn_set.setOnClickListener(this);
         View headerView = navigationView.getHeaderView(0);
         person  = headerView.findViewById(R.id.person);
         user_name = headerView.findViewById(R.id.yoname);
@@ -139,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
 
                 }
+
                 drawerLayout.closeDrawer(navigationView);
                 return true;
             }
@@ -196,6 +200,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     startActivity(intent);
                 }
 
+                break;
+            case R.id.btn_set:
+                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent);
                 break;
         }
     }

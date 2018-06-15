@@ -40,8 +40,6 @@ public class MyInterceptor implements Interceptor {
                     .post(formBody)
                     .build();
             response = chain.proceed(request);
-
-
         }
         return response;
     }

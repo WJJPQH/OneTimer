@@ -33,6 +33,7 @@ public class XiangActivity extends AppCompatActivity implements View.OnClickList
     private boolean like_pd = true;
     private boolean unlike_pd = true;
     private  int flag;
+    private SimpleDraweeView mouse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +63,9 @@ public class XiangActivity extends AppCompatActivity implements View.OnClickList
         he = findViewById(R.id.he);
 
         if (flag==HotVideoFragment.HOTVIDEO){
-            Glide.with(this).load(bean.getUser().getIcon()).into(video_user);
+//            video_user.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(bean.getUser().getIcon())).build());
+//            Glide.with(this).load(bean.getUser().getIcon()).into(video_user);
+            video_user.setImageURI(bean.getUser().getIcon());
             video_video.TOOL_BAR_EXIST = false;
             video_video.setUp(bean.getVideoUrl()
                     , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "看什么没有标题啦!");
@@ -71,8 +74,10 @@ public class XiangActivity extends AppCompatActivity implements View.OnClickList
             work_desc.setText(bean.getWorkDesc());
             he.setText(bean.getCreateTime());
         }else {
-            Glide.with(this).load(dataBean.getUser().getIcon()).into(video_user);
+//            Glide.with(this).load(dataBean.getUser().getIcon()).into(video_user);
+            video_user.setImageURI(dataBean.getUser().getIcon());
             video_video.TOOL_BAR_EXIST = false;
+
             video_video.setUp(dataBean.getVideoUrl()
                     , JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL, "看什么没有标题啦!");
             Glide.with(this).load(dataBean.getCover())
@@ -88,6 +93,8 @@ public class XiangActivity extends AppCompatActivity implements View.OnClickList
         unlike.setOnClickListener(this);
         Glide.with(this).load(R.drawable.raw_1499933216).into(like);
         Glide.with(this).load(R.drawable.raw_1499933217).into(unlike);
+        mouse = findViewById(R.id.mouse);
+        mouse.setImageURI((new Uri.Builder()).scheme("res").path(String.valueOf(R.drawable.raw_1500033586)).build());
     }
 
     @Override

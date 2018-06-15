@@ -46,6 +46,8 @@ public class CompileActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(intent);
                 break;
             case R.id.duanzibtn:
+                Intent in = new Intent(CompileActivity.this,PhotoActivity.class);
+                startActivity(in);
                 break;
         }
     }

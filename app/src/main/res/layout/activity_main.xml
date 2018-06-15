@@ -92,18 +92,19 @@
         app:menu="@menu/new_menu"
         >
         <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:src="@drawable/raw_1499947056"
-        android:layout_marginTop="1000dp"
+        android:layout_marginTop="550dp"
         android:layout_marginLeft="20dp"
         />
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/btn_set"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/raw_1499947157"
-            android:layout_marginTop="1000dp"
-            android:layout_marginLeft="240dp"
+            android:layout_marginTop="550dp"
+            android:layout_marginLeft="160dp"
             />
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>
